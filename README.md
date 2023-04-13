@@ -9,6 +9,7 @@ D 2 cD -
 E 1 -  
 
 WHERE:  
+->'S' is the starting state  
 ->'-' represent lambda,the empty word  
 ->Capital letters are the states of the machine  
 ->Digits are the number of transitions of a node  
