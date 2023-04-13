@@ -9,7 +9,7 @@ D 2 cD -
 E 1 -  
 
 WHERE:  
-->'-' represent the lambda,the empty word  
+->'-' represent lambda,the empty word  
 ->Capital letters are the states of the machine  
 ->Digits are the number of transitions of a node  
 ->LowerCaseLetter-UpperCaseLetter is a transitions
