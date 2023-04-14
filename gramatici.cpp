@@ -3,6 +3,7 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <windows.h>
 using namespace std;
 
 class IOinterface{
@@ -85,19 +86,26 @@ class Meniu{
 private:
     Gramatica graf;
     Cuvinte listaCuvinte;
+    HANDLE  hConsole;
+
 public:
     void start(istream& gramatica , istream& cuvinte){
+        this->hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         this->graf.citire(gramatica);
         this->listaCuvinte.citire(cuvinte);
         cout<<"Cuvinte:\n---------\n";
         for(int i = 0 ; i < this->listaCuvinte.getIndex() ; i ++){
-            if(this->graf.acceptare('S',this->listaCuvinte[i]))
+            if(this->graf.acceptare('S',this->listaCuvinte[i])){
+                SetConsoleTextAttribute(hConsole, 10);
                 cout<<(this->listaCuvinte.getVector())[i]<<"->acceptat\n";
-            else
+            }
+            else{
+                SetConsoleTextAttribute(hConsole, 12);
                 cout<<(this->listaCuvinte.getVector())[i]<<"->respins\n";
+            }
         }
+        SetConsoleTextAttribute(hConsole, 7);
     }
-
 };
 
 int main(){
